@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <com.liuzr.ancient.ui.widget.VerticalTextView
+        android:id="@+id/diary_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="60dp"
+        android:textColor="@android:color/black"
+        style="@style/PressableBg"
+        tools:text="九月十二日 水调歌头·中秋"/>
+
+    <com.liuzr.ancient.ui.widget.VerticalTextView
+        android:id="@+id/year"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/diary_title"
+        android:paddingTop="35dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@android:color/black"
+        app:verticalTextSize="22sp"
+        tools:ignore="RtlHardcoded"
+        tools:text="二零一六年 丙申"/>
+
+</RelativeLayout>
