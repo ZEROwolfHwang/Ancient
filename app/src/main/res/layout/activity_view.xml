@@ -67,7 +67,7 @@
                 android:orientation="vertical"
                 android:gravity="center_horizontal">
 
-                <MultiAutoCompleteTextView
+                <com.liuzr.ancient.ui.widget.MultipleRowTextView
                     android:id="@+id/vertical_view_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
