@@ -7,11 +7,11 @@ import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
 
-public class JianShiApplication extends Application {
+public class MainApplication extends Application {
 
-  private static JianShiApplication instance;
+  private static MainApplication instance;
 
-  public static JianShiApplication getInstance() {
+  public static MainApplication getInstance() {
     return instance;
   }
 

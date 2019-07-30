@@ -1,16 +1,6 @@
-<!--
-  ~ Created by wingjay on 11/16/16 3:31 PM
-  ~ Copyright (c) 2016.  All rights reserved.
-  ~
-  ~ Last modified 11/10/16 11:05 AM
-  ~
-  ~ Reach me: https://github.com/wingjay
-  ~ Email: yinjiesh@126.com
-  -->
-
 <resources>
-    <string name="app_name">简诗</string>
-    <string name="app_name_broken">简\n诗</string>
+    <string name="app_name">Ancient</string>
+    <string name="app_name_broken">A\nN\nC\nI\nE\nN\nT</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -21,11 +11,11 @@
     <string name="title_activity_diary_view">DiaryViewActivity</string>
     <string name="title_activity_base">BaseActivity</string>
 
-    <string name="logo_name">简诗</string>
+    <string name="logo_name">Ancient</string>
     <string name="logo_slogan">回归文字的本质，回归美好</string>
-    <string name="write">撰</string>
-    <string name="read">阅</string>
-    <string name="setting">置</string>
+    <string name="write">Write</string>
+    <string name="read">Read</string>
+    <string name="setting">Setting</string>
     <string name="day">日</string>
     <string name="month">月</string>
     <string name="year">年</string>
@@ -33,11 +23,11 @@
     <string name="no">否</string>
     <string name="edit_title_hint">标题</string>
     <string name="edit_content_hint">讲述你的故事&#8230;</string>
-    <string name="edit">辑</string>
-    <string name="edit_save">存</string>
-    <string name="share">享</string>
-    <string name="email">用户名</string>
-    <string name="password">密码</string>
+    <string name="edit">Edit</string>
+    <string name="edit_save">Save</string>
+    <string name="share">Share</string>
+    <string name="email">username</string>
+    <string name="password">password</string>
     <string name="edit_saving">保存中&#8230;</string>
     <string name="save_success">保存成功!</string>
     <string name="save_failure">保存失败&#8230;</string>

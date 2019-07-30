@@ -25,12 +25,15 @@
         >
 
         <TextView
+            android:width="80dp"
+            android:textAlignment="center"
+            android:gravity="end"
             android:id="@+id/app_name"
             style="@style/SignupTextView"
             android:text="@string/app_name_broken"
             android:textColor="@color/black"
             android:textSize="36sp"
-            />
+            android:layout_gravity="start"/>
 
         <TextView
             android:id="@+id/app_slogan"

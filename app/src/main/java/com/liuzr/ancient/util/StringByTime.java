@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.liuzr.ancient.R;
-import com.liuzr.ancient.global.JianShiApplication;
+import com.liuzr.ancient.global.MainApplication;
 
 import org.joda.time.DateTime;
 
@@ -74,7 +74,7 @@ public class StringByTime {
   private static Map<TimeRange, String> editTitleHintDataSet;
   private static Map<TimeRange, String> threeLinePoemDataSet;
   static {
-    Context context = JianShiApplication.getInstance().getApplicationContext();
+    Context context = MainApplication.getInstance().getApplicationContext();
     Resources resources = context.getResources();
 
     editContentHintDataSet = new HashMap<>();
@@ -109,7 +109,7 @@ public class StringByTime {
 
   public static String[] getThreeLinePoemArrayByNow() {
     String poemString = getStringFromDataset(threeLinePoemDataSet);
-    Context context = JianShiApplication.getInstance().getApplicationContext();
+    Context context = MainApplication.getInstance().getApplicationContext();
     return StringUtil.split(poemString, context.getResources().getString(R.string.three_line_string_split));
   }
 }

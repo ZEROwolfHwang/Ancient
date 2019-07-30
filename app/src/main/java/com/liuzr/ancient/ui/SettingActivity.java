@@ -61,13 +61,10 @@ public class SettingActivity extends BaseActivity {
     void chooseBgColor() {
         BgColorPickDialogFragment bgColorPickDialogFragment = new BgColorPickDialogFragment();
         bgColorPickDialogFragment.setOnBackgroundColorChangedListener(
-                new BgColorPickDialogFragment.OnBackgroundColorChangedListener() {
-                    @Override
-                    public void onBackgroundColorChanged(int newColorRes) {
-                        userPrefs.setBackgroundColor(newColorRes);
-                        SettingActivity.this.setContainerBgColor(newColorRes);
-                        setResult(RESULT_OK);
-                    }
+                newColorRes -> {
+                    userPrefs.setBackgroundColor(newColorRes);
+                    SettingActivity.this.setContainerBgColor(newColorRes);
+                    setResult(RESULT_OK);
                 });
         bgColorPickDialogFragment.show(getSupportFragmentManager(), null);
     }
@@ -75,6 +72,7 @@ public class SettingActivity extends BaseActivity {
 
     @OnClick(R.id.logout)
     void logout() {
-        userManager.logout(this);
+//        userManager.logout(this);
+        startActivity(SignupActivity.createIntent(this));
     }
 }

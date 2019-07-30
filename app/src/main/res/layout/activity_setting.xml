@@ -95,22 +95,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_18"
-            android:orientation="vertical"
-        >
-
-            <TextView
-                style="@style/TitleTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_16"
-                android:text="@string/support_info"
-            />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
