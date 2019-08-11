@@ -7,11 +7,10 @@
 
     <FrameLayout
         android:id="@+id/left_circle"
-        android:layout_width="137dp"
-        android:layout_height="307dp"
+        android:layout_width="80dp"
+        android:layout_height="400dp"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="-67dp"
-        android:background="@drawable/jianshi_logo"/>
+        android:background="@drawable/ancient_logo"/>
 
     <RelativeLayout
         android:id="@+id/container"

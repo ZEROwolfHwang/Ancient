@@ -1,6 +1,7 @@
 
 package com.liuzr.ancient.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -72,7 +73,7 @@ public class SettingActivity extends BaseActivity {
 
     @OnClick(R.id.logout)
     void logout() {
-//        userManager.logout(this);
-        startActivity(SignupActivity.createIntent(this));
+        Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
     }
 }

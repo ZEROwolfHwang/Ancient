@@ -10,36 +10,38 @@ import android.os.Message;
 import com.liuzr.ancient.R;
 import com.liuzr.ancient.ui.base.BaseActivity;
 
+/**
+ *
+ */
 public class SplashActivity extends BaseActivity {
 
     private final static int JUMP_TO_NEXT = 1;
 
-    private MyHandler handler = new MyHandler(SplashActivity.this);
+    //    private MyHandler handler = new MyHandler(SplashActivity.this);
+
+    /**
+     * 实现延时跳转到登录界面
+     */
+    private Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            switch (msg.what) {
+                case JUMP_TO_NEXT:
+                    Intent intent = new Intent(mActivity, SignupActivity.class);
+                    mActivity.startActivity(intent);
+                    mActivity.finish();
+            }
+            return false;
+        }
+    });
+    private SplashActivity mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        mActivity = this;
         handler.sendEmptyMessageDelayed(JUMP_TO_NEXT, 500);
     }
 
-    private static class MyHandler extends Handler {
-        private final SplashActivity mActivity;
-
-        public MyHandler(SplashActivity activity) {
-            mActivity = activity;
-        }
-
-
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case JUMP_TO_NEXT:
-
-                    mActivity.startActivity(new Intent(mActivity, SignupActivity.class));
-                    mActivity.finish();
-            }
-            super.handleMessage(msg);
-        }
-    }
 }

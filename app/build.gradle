@@ -46,11 +46,13 @@ dependencies {
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
     implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+    //将当前时间转换成标准格式
     implementation 'joda-time:joda-time:2.3'
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
     //font
     implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
+
     //suqare
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
@@ -58,6 +60,7 @@ dependencies {
     implementation 'io.reactivex:rxandroid:1.2.1'
     implementation 'io.reactivex:rxjava:1.1.6'
 
+    // 简化findViewById的操作
     implementation 'com.jakewharton:butterknife:10.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 }

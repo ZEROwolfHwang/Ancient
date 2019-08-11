@@ -10,14 +10,14 @@
 
 package com.liuzr.ancient.db.model;
 
-import com.liuzr.ancient.db.JianshiDatabase;
+import com.liuzr.ancient.db.AncientDatabase;
 import com.liuzr.ancient.manager.FullDateManager;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
-@Table(database = JianshiDatabase.class)
+@Table(database = AncientDatabase.class)
 public class Diary extends BaseModel{
 
   @PrimaryKey

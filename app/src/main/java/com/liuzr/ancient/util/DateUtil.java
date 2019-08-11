@@ -1,5 +1,7 @@
 package com.liuzr.ancient.util;
 
+import android.util.Log;
+
 import org.joda.time.DateTime;
 
 public class DateUtil {
@@ -26,6 +28,7 @@ public class DateUtil {
   }
 
   public static long getCurrentTimeStamp() {
+    Log.i("lzr", System.currentTimeMillis() / SECOND_IN_MILLIS + "");
     return System.currentTimeMillis() / SECOND_IN_MILLIS;
   }
 

@@ -1,6 +1,7 @@
 
 package com.liuzr.ancient.ui.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
@@ -11,6 +12,7 @@ import com.liuzr.ancient.R;
 import com.liuzr.ancient.util.DisplayUtil;
 
 
+@SuppressLint("AppCompatCustomView")
 public class VerticalTextView extends TextView {
 
   public VerticalTextView(Context context) {

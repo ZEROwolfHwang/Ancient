@@ -1,43 +1,27 @@
 
 package com.liuzr.ancient.ui;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Pair;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.liuzr.ancient.R;
-import com.liuzr.ancient.bean.ShareContent;
 import com.liuzr.ancient.db.model.Diary;
 import com.liuzr.ancient.db.service.DiaryService;
-import com.liuzr.ancient.global.Constants;
-import com.liuzr.ancient.manager.ScreenshotManager;
-import com.liuzr.ancient.network.JsonDataResponse;
-import com.liuzr.ancient.network.UserService;
 import com.liuzr.ancient.prefs.UserPrefs;
 import com.liuzr.ancient.ui.base.BaseActivity;
 import com.liuzr.ancient.ui.widget.MultipleRowTextView;
 import com.liuzr.ancient.ui.widget.TextPointView;
 import com.liuzr.ancient.util.DisplayUtil;
-import com.liuzr.ancient.util.IntentUtil;
 import com.liuzr.ancient.util.LanguageUtil;
 
-import java.io.File;
-
 import butterknife.BindView;
-import butterknife.OnClick;
-import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action0;
 import rx.functions.Action1;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 public class ViewActivity extends BaseActivity {
@@ -84,65 +68,6 @@ public class ViewActivity extends BaseActivity {
     //  @Inject
     UserPrefs userPrefs;
 
-    //  @Inject
-    UserService userService;
-
-    //  @Inject
-    ScreenshotManager screenshotManager;
-
-    @OnClick(R.id.view_share)
-    void share() {
-
-        final View target = verticalStyle ? container : normalContainer;
-        final ProgressDialog dialog = ProgressDialog.show(this, "", "加载中...");
-        screenshotManager.shotScreen(target, "temp.jpg")
-                .observeOn(Schedulers.io())
-                .filter(new Func1<String, Boolean>() {
-                    @Override
-                    public Boolean call(String s) {
-                        return !TextUtils.isEmpty(s);
-                    }
-                })
-                .flatMap(new Func1<String, Observable<Pair<String, ShareContent>>>() {
-                    @Override
-                    public Observable<Pair<String, ShareContent>> call(String path) {
-                        ShareContent shareContent = new ShareContent();
-                        try {
-                            JsonDataResponse<ShareContent> response = userService.getShareContent().toBlocking().first();
-                            if (response.getRc() == Constants.ServerResultCode.RESULT_OK && response.getData() != null) {
-                                shareContent = response.getData();
-                            }
-                        } catch (Exception e) {
-                            return Observable.just(Pair.create(path, shareContent));
-                        }
-                        return Observable.just(Pair.create(path, shareContent));
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnTerminate(new Action0() {
-                    @Override
-                    public void call() {
-                        dialog.dismiss();
-                    }
-                })
-                .subscribe(new Action1<Pair<String, ShareContent>>() {
-                    @Override
-                    public void call(Pair<String, ShareContent> stringShareContentPair) {
-                        if (!isUISafe()) {
-                            return;
-                        }
-                        IntentUtil.shareLinkWithImage(ViewActivity.this,
-                                stringShareContentPair.second,
-                                Uri.fromFile(new File(stringShareContentPair.first)));
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        makeToast(getString(R.string.share_failure));
-                        dialog.dismiss();
-                    }
-                });
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,7 +76,6 @@ public class ViewActivity extends BaseActivity {
         diaryService = new DiaryService(this);
 //    JianShiApplication.getAppComponent().inject(this);
         userPrefs = new UserPrefs(ViewActivity.this);
-        screenshotManager = new ScreenshotManager(this);
         verticalStyle = userPrefs.getVerticalWrite();
         setVisibilityByVerticalStyle();
 

@@ -128,13 +128,6 @@
             android:layout_marginRight="@dimen/contain_red_circle_size"
             >
 
-            <com.liuzr.ancient.ui.widget.DayChooser
-                android:id="@+id/day_chooser"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:visibility="gone"
-                />
 
             <com.liuzr.ancient.ui.widget.ThreeLinePoemView
                 android:id="@+id/three_line_poem"

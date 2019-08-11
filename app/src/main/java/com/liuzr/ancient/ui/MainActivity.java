@@ -1,7 +1,6 @@
 
 package com.liuzr.ancient.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +12,6 @@ import com.liuzr.ancient.global.Constants;
 import com.liuzr.ancient.manager.FullDateManager;
 import com.liuzr.ancient.prefs.UserPrefs;
 import com.liuzr.ancient.ui.base.BaseActivity;
-import com.liuzr.ancient.ui.widget.DayChooser;
 import com.liuzr.ancient.ui.widget.TextPointView;
 import com.liuzr.ancient.ui.widget.ThreeLinePoemView;
 import com.liuzr.ancient.ui.widget.VerticalTextView;
@@ -26,90 +24,87 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
-  private final static String YEAR = "year";
-  private final static String MONTH = "month";
-  private final static String DAY = "day";
+    private final static String YEAR = "year";
+    private final static String MONTH = "month";
+    private final static String DAY = "day";
 
-  @BindView(R.id.background_image)
-  ImageView backgroundImage;
+    @BindView(R.id.background_image)
+    ImageView backgroundImage;
 
-  @BindView(R.id.year)
-  VerticalTextView yearTextView;
+    @BindView(R.id.year)
+    VerticalTextView yearTextView;
 
-  @BindView(R.id.month)
-  VerticalTextView monthTextView;
+    @BindView(R.id.month)
+    VerticalTextView monthTextView;
 
-  @BindView(R.id.day)
-  VerticalTextView dayTextView;
+    @BindView(R.id.day)
+    VerticalTextView dayTextView;
 
-  @BindView(R.id.writer)
-  TextPointView writerView;
+    @BindView(R.id.writer)
+    TextPointView writerView;
 
-  @BindView(R.id.reader)
-  TextPointView readerView;
+    @BindView(R.id.reader)
+    TextPointView readerView;
 
-  @BindView(R.id.day_chooser)
-  DayChooser dayChooser;
+    @BindView(R.id.three_line_poem)
+    ThreeLinePoemView threeLinePoemView;
 
-  @BindView(R.id.three_line_poem)
-  ThreeLinePoemView threeLinePoemView;
-
-  UserPrefs userPrefs;
+    UserPrefs userPrefs;
 
 
-  private volatile int year, month, day;
+    private volatile int year, month, day;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.activity_main);
-    userPrefs = UserPrefs.getInstance(this);
+        setContentView(R.layout.activity_main);
+        userPrefs = UserPrefs.getInstance(this);
 
-    if (savedInstanceState != null) {
-      year = savedInstanceState.getInt(YEAR);
-      month = savedInstanceState.getInt(MONTH);
-      day = savedInstanceState.getInt(DAY);
-    } else {
-      setTodayAsFullDate();
-    }
-    updateFullDate();
+        if (savedInstanceState != null) {
+            year = savedInstanceState.getInt(YEAR);
+            month = savedInstanceState.getInt(MONTH);
+            day = savedInstanceState.getInt(DAY);
+        } else {
+            setTodayAsFullDate();
+        }
+        updateFullDate();
 
-    writerView.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent i = new Intent(MainActivity.this, EditActivity.class);
-        startActivity(i);
-      }
-    });
+        writerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, EditActivity.class);
+                startActivity(i);
+            }
+        });
 
-    readerView.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        startActivity(new Intent(MainActivity.this, DiaryListActivity.class));
-      }
-    });
+        readerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, DiaryListActivity.class));
+            }
+        });
 
 //    SyncService.syncImmediately(this);
-  }
-
-  @Override
-  protected void onStart() {
-    super.onStart();
-    setupImagePoemBackground();
-  }
-
-  private void setupImagePoemBackground() {
-    if (!userPrefs.getHomeImagePoemSetting()) {
-      setContainerBgColorFromPrefs();
-      return;
     }
 
-    if (!userPrefs.canFetchNextHomeImagePoem() && userPrefs.getLastHomeImagePoem() != null) {
-      // use last imagePoem data
-      setImagePoem(userPrefs.getLastHomeImagePoem());
-      return;
+    @Override
+    protected void onStart() {
+        super.onStart();
+        setupImagePoemBackground();
     }
+
+    private void setupImagePoemBackground() {
+        if (!userPrefs.getHomeImagePoemSetting()) {
+            setContainerBgColorFromPrefs();
+            return;
+        }
+
+        if (!userPrefs.canFetchNextHomeImagePoem() && userPrefs.getLastHomeImagePoem() != null) {
+            // use last imagePoem data
+            setImagePoem(userPrefs.getLastHomeImagePoem());
+            return;
+        }
 
 //    if (backgroundImage.getWidth() == 0) {
 //      backgroundImage.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -122,7 +117,7 @@ public class MainActivity extends BaseActivity {
 //    } else {
 //      loadImagePoem();
 //    }
-  }
+    }
 
 //  private void loadImagePoem() {
 //    userService.getImagePoem(backgroundImage.getWidth(), backgroundImage.getHeight())
@@ -149,71 +144,65 @@ public class MainActivity extends BaseActivity {
 //        });
 //  }
 
-  private void setImagePoem(ImagePoem imagePoem) {
-    setContainerBgColor(R.color.transparent);
-    if (imagePoem == null) {
-      Picasso.with(this)
-          .load(R.mipmap.default_home_image)
-          .fit()
-          .centerCrop()
-          .into(backgroundImage);
-    } else {
-      Picasso.with(MainActivity.this)
-          .load(imagePoem.getImageUrl())
-          .placeholder(R.mipmap.default_home_image)
-          .fit()
-          .centerCrop()
-          .into(backgroundImage);
-      threeLinePoemView.setThreeLinePoem(imagePoem.getPoem());
+    private void setImagePoem(ImagePoem imagePoem) {
+        setContainerBgColor(R.color.transparent);
+        if (imagePoem == null) {
+            Picasso.with(this)
+                    .load(R.mipmap.default_home_image)
+                    .fit()
+                    .centerCrop()
+                    .into(backgroundImage);
+        } else {
+            Picasso.with(MainActivity.this)
+                    .load(imagePoem.getImageUrl())
+                    .placeholder(R.mipmap.default_home_image)
+                    .fit()
+                    .centerCrop()
+                    .into(backgroundImage);
+            threeLinePoemView.setThreeLinePoem(imagePoem.getPoem());
+        }
     }
-  }
 
-  @OnClick(R.id.setting)
-  void toSettingsPage(View v) {
-    Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-    startActivityForResult(intent, Constants.RequestCode.REQUEST_CODE_BG_COLOR_CHANGE);
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == Constants.RequestCode.REQUEST_CODE_BG_COLOR_CHANGE) {
-      if (resultCode == RESULT_OK) {
-        setContainerBgColorFromPrefs();
-      }
+    @OnClick(R.id.setting)
+    void toSettingsPage(View v) {
+        Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+        startActivityForResult(intent, Constants.RequestCode.REQUEST_CODE_BG_COLOR_CHANGE);
     }
-  }
 
-  private void setDate(DateTime date) {
-    year = date.getYear();
-    month = date.getMonthOfYear();
-    day = date.getDayOfMonth();
-  }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Constants.RequestCode.REQUEST_CODE_BG_COLOR_CHANGE) {
+            if (resultCode == RESULT_OK) {
+                setContainerBgColorFromPrefs();
+            }
+        }
+    }
 
-  private void setTodayAsFullDate() {
-    DateTime currentDateTime = new DateTime();
-    setDate(currentDateTime);
-  }
+    private void setDate(DateTime date) {
+        year = date.getYear();
+        month = date.getMonthOfYear();
+        day = date.getDayOfMonth();
+    }
 
-  private void updateFullDate() {
-    FullDateManager fullDateManager = new FullDateManager();
-    yearTextView.setText(fullDateManager.getYear(year));
-    monthTextView.setText(fullDateManager.getMonth(month));
-    dayTextView.setText(fullDateManager.getDay(day));
-  }
+    private void setTodayAsFullDate() {
+        DateTime currentDateTime = new DateTime();
+        setDate(currentDateTime);
+    }
 
-  @Override
-  protected void onSaveInstanceState(Bundle outState) {
-    outState.putInt(YEAR, year);
-    outState.putInt(MONTH, month);
-    outState.putInt(DAY, day);
-    super.onSaveInstanceState(outState);
-  }
+    private void updateFullDate() {
+        FullDateManager fullDateManager = new FullDateManager();
+        yearTextView.setText(fullDateManager.getYear(year));
+        monthTextView.setText(fullDateManager.getMonth(month));
+        dayTextView.setText(fullDateManager.getDay(day));
+    }
 
-  public static Intent createIntent(Context context) {
-    Intent intent = new Intent(context, MainActivity.class);
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK |
-        Intent.FLAG_ACTIVITY_NO_ANIMATION);
-    return intent;
-  }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(YEAR, year);
+        outState.putInt(MONTH, month);
+        outState.putInt(DAY, day);
+        super.onSaveInstanceState(outState);
+    }
+
 }

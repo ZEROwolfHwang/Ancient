@@ -5,9 +5,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
-import androidx.annotation.ColorRes;
-import androidx.annotation.Px;
-import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -21,8 +18,14 @@ import com.liuzr.ancient.util.DisplayUtil;
 
 import java.util.Random;
 
+import androidx.annotation.ColorRes;
+import androidx.annotation.Px;
+import androidx.core.content.ContextCompat;
 import uk.co.chrisjenx.calligraphy.TypefaceUtils;
 
+/**
+ * 自定义组件
+ */
 public class TextPointView extends FrameLayout {
 
   private final long random = new Random().nextLong();

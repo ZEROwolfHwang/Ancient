@@ -113,15 +113,6 @@
             android:layout_gravity="center_horizontal"
             app:text="@string/edit"/>
 
-        <com.liuzr.ancient.ui.widget.TextPointView
-            android:id="@+id/view_share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            app:text="@string/share"/>
-
     </LinearLayout>
 
 </RelativeLayout>

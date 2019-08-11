@@ -3,8 +3,6 @@ package com.liuzr.ancient.ui.widget;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +14,9 @@ import com.liuzr.ancient.R;
 import com.liuzr.ancient.ui.theme.TraditionalColorNamer;
 
 import java.util.List;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 
 public class BgColorPickDialogFragment extends DialogFragment {
 
@@ -80,7 +81,7 @@ public class BgColorPickDialogFragment extends DialogFragment {
 
       final TraditionalColorNamer colorNamer = colorNamerList.get(position);
       viewHolder.colorName.setText(colorNamer.getColorName());
-      viewHolder.colorHint.setCircleBackgroundColor(colorNamer.getColorRes());
+      viewHolder.colorHint.setCircleBackgroundColor(R.color.colorPrimary);
       convertView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {

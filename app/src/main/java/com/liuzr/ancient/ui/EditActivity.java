@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -25,6 +24,7 @@ import com.liuzr.ancient.util.StringByTime;
 
 import java.util.UUID;
 
+import androidx.appcompat.app.AlertDialog;
 import butterknife.BindView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -52,14 +52,12 @@ public class EditActivity extends BaseActivity {
   private Diary diary;
   private String originContent, originTitle;
 
-//  @Inject
   DiaryService diaryService;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_edit);
-//    JianShiApplication.getAppComponent().inject(this);
 
     diaryService = new DiaryService(this);
 
@@ -70,12 +68,7 @@ public class EditActivity extends BaseActivity {
       loadDiary();
     }
     //manually save
-    save.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        saveDiary();
-      }
-    });
+    save.setOnClickListener(v -> saveDiary());
 
     SimpleTextWatcher textWatcher = new SimpleTextWatcher() {
       @Override
