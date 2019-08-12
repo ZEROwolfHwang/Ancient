@@ -9,7 +9,4 @@ public class Constants {
     public final static int REQUEST_CODE_BG_COLOR_CHANGE = 200;
   }
 
-  public final static class ServerResultCode {
-    public final static int RESULT_OK = 0;
-  }
 }

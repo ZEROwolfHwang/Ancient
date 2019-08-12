@@ -8,11 +8,8 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.liuzr.ancient.R;
-import com.liuzr.ancient.ui.base.BaseActivity;
+import com.liuzr.ancient.global.BaseActivity;
 
-/**
- *
- */
 public class SplashActivity extends BaseActivity {
 
     private final static int JUMP_TO_NEXT = 1;

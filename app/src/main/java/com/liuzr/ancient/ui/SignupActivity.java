@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.widget.EditText;
 
 import com.liuzr.ancient.R;
-import com.liuzr.ancient.ui.base.BaseActivity;
+import com.liuzr.ancient.global.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

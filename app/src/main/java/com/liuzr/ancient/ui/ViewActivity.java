@@ -10,10 +10,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.liuzr.ancient.R;
-import com.liuzr.ancient.db.model.Diary;
-import com.liuzr.ancient.db.service.DiaryService;
+import com.liuzr.ancient.db.DiaryService;
 import com.liuzr.ancient.prefs.UserPrefs;
-import com.liuzr.ancient.ui.base.BaseActivity;
+import com.liuzr.ancient.global.BaseActivity;
 import com.liuzr.ancient.ui.widget.MultipleRowTextView;
 import com.liuzr.ancient.ui.widget.TextPointView;
 import com.liuzr.ancient.util.DisplayUtil;
@@ -21,7 +20,6 @@ import com.liuzr.ancient.util.LanguageUtil;
 
 import butterknife.BindView;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 public class ViewActivity extends BaseActivity {
@@ -74,7 +72,6 @@ public class ViewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
         diaryService = new DiaryService(this);
-//    JianShiApplication.getAppComponent().inject(this);
         userPrefs = new UserPrefs(ViewActivity.this);
         verticalStyle = userPrefs.getVerticalWrite();
         setVisibilityByVerticalStyle();
@@ -86,14 +83,11 @@ public class ViewActivity extends BaseActivity {
 
         loadDiary();
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setResult(RESULT_OK);
-                Intent i = EditActivity.createIntentWithId(ViewActivity.this, diaryUuid);
-                startActivity(i);
-                finish();
-            }
+        edit.setOnClickListener(v -> {
+            setResult(RESULT_OK);
+            Intent i = EditActivity.createIntentWithId(ViewActivity.this, diaryUuid);
+            startActivity(i);
+            finish();
         });
     }
 
@@ -101,17 +95,14 @@ public class ViewActivity extends BaseActivity {
         diaryService.getDiaryByUuid(diaryUuid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Diary>() {
-                    @Override
-                    public void call(Diary diary) {
-                        if (diary != null) {
-                            showDiary(
-                                    diary.getTitle(),
-                                    diary.getContent(),
-                                    LanguageUtil.getDiaryDateEnder(
-                                            getApplicationContext(),
-                                            diary.getTime_created()));
-                        }
+                .subscribe(diary -> {
+                    if (diary != null) {
+                        showDiary(
+                                diary.getTitle(),
+                                diary.getContent(),
+                                LanguageUtil.getDiaryDateEnder(
+                                        getApplicationContext(),
+                                        diary.getTime_created()));
                     }
                 });
     }

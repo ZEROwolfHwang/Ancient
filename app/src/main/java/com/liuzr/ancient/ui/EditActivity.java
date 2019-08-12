@@ -16,9 +16,9 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.liuzr.ancient.R;
-import com.liuzr.ancient.db.model.Diary;
-import com.liuzr.ancient.db.service.DiaryService;
-import com.liuzr.ancient.ui.base.BaseActivity;
+import com.liuzr.ancient.db.Diary;
+import com.liuzr.ancient.db.DiaryService;
+import com.liuzr.ancient.global.BaseActivity;
 import com.liuzr.ancient.util.DateUtil;
 import com.liuzr.ancient.util.StringByTime;
 
@@ -27,7 +27,6 @@ import java.util.UUID;
 import androidx.appcompat.app.AlertDialog;
 import butterknife.BindView;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 public class EditActivity extends BaseActivity {
@@ -81,13 +80,10 @@ public class EditActivity extends BaseActivity {
     title.addTextChangedListener(textWatcher);
     content.addTextChangedListener(textWatcher);
 
-    scrollView.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (content.requestFocus()) {
-          InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-          imm.showSoftInput(content, InputMethodManager.SHOW_IMPLICIT);
-        }
+    scrollView.setOnClickListener(v -> {
+      if (content.requestFocus()) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(content, InputMethodManager.SHOW_IMPLICIT);
       }
     });
 
@@ -124,13 +120,10 @@ public class EditActivity extends BaseActivity {
     diaryService.saveDiary(diary)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Action1<Void>() {
-          @Override
-          public void call(Void aVoid) {
-            Intent i = ViewActivity.createIntent(EditActivity.this, diary.getUuid());
-            startActivity(i);
-            finish();
-          }
+        .subscribe(aVoid -> {
+          Intent i = ViewActivity.createIntent(EditActivity.this, diary.getUuid());
+          startActivity(i);
+          finish();
         });
   }
 
@@ -142,16 +135,13 @@ public class EditActivity extends BaseActivity {
     diaryService.getDiaryByUuid(diaryUUID)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Action1<Diary>() {
-          @Override
-          public void call(Diary diary) {
-            if (diary != null) {
-              EditActivity.this.diary = diary;
-              originContent = diary.getContent();
-              originTitle = diary.getTitle();
-              title.setText(diary.getTitle());
-              content.setText(diary.getContent());
-            }
+        .subscribe(diary -> {
+          if (diary != null) {
+            EditActivity.this.diary = diary;
+            originContent = diary.getContent();
+            originTitle = diary.getTitle();
+            title.setText(diary.getTitle());
+            content.setText(diary.getContent());
           }
         });
   }

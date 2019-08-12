@@ -7,15 +7,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.liuzr.ancient.R;
-import com.liuzr.ancient.bean.ImagePoem;
+import com.liuzr.ancient.global.BaseActivity;
 import com.liuzr.ancient.global.Constants;
 import com.liuzr.ancient.manager.FullDateManager;
 import com.liuzr.ancient.prefs.UserPrefs;
-import com.liuzr.ancient.ui.base.BaseActivity;
 import com.liuzr.ancient.ui.widget.TextPointView;
 import com.liuzr.ancient.ui.widget.ThreeLinePoemView;
 import com.liuzr.ancient.ui.widget.VerticalTextView;
-import com.squareup.picasso.Picasso;
 
 import org.joda.time.DateTime;
 
@@ -70,97 +68,17 @@ public class MainActivity extends BaseActivity {
         }
         updateFullDate();
 
-        writerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, EditActivity.class);
-                startActivity(i);
-            }
+        writerView.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, EditActivity.class);
+            startActivity(i);
         });
 
-        readerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, DiaryListActivity.class));
-            }
-        });
-
-//    SyncService.syncImmediately(this);
+        readerView.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, DiaryListActivity.class)));
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        setupImagePoemBackground();
-    }
-
-    private void setupImagePoemBackground() {
-        if (!userPrefs.getHomeImagePoemSetting()) {
-            setContainerBgColorFromPrefs();
-            return;
-        }
-
-        if (!userPrefs.canFetchNextHomeImagePoem() && userPrefs.getLastHomeImagePoem() != null) {
-            // use last imagePoem data
-            setImagePoem(userPrefs.getLastHomeImagePoem());
-            return;
-        }
-
-//    if (backgroundImage.getWidth() == 0) {
-//      backgroundImage.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//        @Override
-//        public void onGlobalLayout() {
-//          backgroundImage.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-//          loadImagePoem();
-//        }
-//      });
-//    } else {
-//      loadImagePoem();
-//    }
-    }
-
-//  private void loadImagePoem() {
-//    userService.getImagePoem(backgroundImage.getWidth(), backgroundImage.getHeight())
-//        .compose(RxUtil.<JsonDataResponse<ImagePoem>>normalSchedulers())
-//        .filter(new Func1<JsonDataResponse<ImagePoem>, Boolean>() {
-//          @Override
-//          public Boolean call(JsonDataResponse<ImagePoem> response) {
-//            return (response.getRc() == Constants.ServerResultCode.RESULT_OK)
-//                && (response.getData() != null);
-//          }
-//        })
-//        .subscribe(new Action1<JsonDataResponse<ImagePoem>>() {
-//          @Override
-//          public void call(JsonDataResponse<ImagePoem> response) {
-//            setImagePoem(response.getData());
-//            userPrefs.setLastHomeImagePoem(response.getData());
-//            userPrefs.setNextFetchHomeImagePoemTime(response.getData().getNextFetchTimeSec());
-//          }
-//        }, new Action1<Throwable>() {
-//          @Override
-//          public void call(Throwable throwable) {
-//            Timber.e(throwable, "getImagePoem() failure");
-//          }
-//        });
-//  }
-
-    private void setImagePoem(ImagePoem imagePoem) {
-        setContainerBgColor(R.color.transparent);
-        if (imagePoem == null) {
-            Picasso.with(this)
-                    .load(R.mipmap.default_home_image)
-                    .fit()
-                    .centerCrop()
-                    .into(backgroundImage);
-        } else {
-            Picasso.with(MainActivity.this)
-                    .load(imagePoem.getImageUrl())
-                    .placeholder(R.mipmap.default_home_image)
-                    .fit()
-                    .centerCrop()
-                    .into(backgroundImage);
-            threeLinePoemView.setThreeLinePoem(imagePoem.getPoem());
-        }
     }
 
     @OnClick(R.id.setting)

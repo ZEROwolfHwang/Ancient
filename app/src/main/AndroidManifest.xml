@@ -47,7 +47,7 @@
             android:label="@string/title_activity_diary_list">
         </activity>
         <activity
-            android:name=".ui.base.BaseActivity"
+            android:name=".global.BaseActivity"
             android:exported="false"
             android:label="@string/title_activity_base">
         </activity>

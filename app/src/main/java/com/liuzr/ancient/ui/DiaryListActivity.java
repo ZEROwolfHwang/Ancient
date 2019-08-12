@@ -4,21 +4,21 @@ package com.liuzr.ancient.ui;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.liuzr.ancient.R;
-import com.liuzr.ancient.db.model.Diary;
-import com.liuzr.ancient.db.service.DiaryService;
+import com.liuzr.ancient.db.Diary;
+import com.liuzr.ancient.db.DiaryService;
+import com.liuzr.ancient.global.BaseActivity;
 import com.liuzr.ancient.global.Constants;
 import com.liuzr.ancient.ui.adapter.DiaryListAdapter;
-import com.liuzr.ancient.ui.base.BaseActivity;
 import com.liuzr.ancient.util.DateUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import rx.android.schedulers.AndroidSchedulers;

@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.liuzr.ancient.R;
-import com.liuzr.ancient.manager.UserManager;
 import com.liuzr.ancient.prefs.UserPrefs;
-import com.liuzr.ancient.ui.base.BaseActivity;
+import com.liuzr.ancient.global.BaseActivity;
 import com.liuzr.ancient.ui.widget.BgColorPickDialogFragment;
 
 import androidx.appcompat.widget.SwitchCompat;
@@ -21,15 +20,11 @@ public class SettingActivity extends BaseActivity {
     @BindView(R.id.vertical_write)
     SwitchCompat verticalWrite;
 
-    @BindView(R.id.home_image_poem_switch)
-    SwitchCompat homeImagePoemSwitch;
-
     @BindView(R.id.customize_bg_color)
     View customizeBgColor;
 
     UserPrefs userPrefs;
 
-    UserManager userManager;
 
 
     @Override
@@ -38,11 +33,8 @@ public class SettingActivity extends BaseActivity {
         setContentView(R.layout.activity_setting);
 
         userPrefs = new UserPrefs(this);
-        userManager = UserManager.getInstance(this);
 
         verticalWrite.setChecked(userPrefs.getVerticalWrite());
-        homeImagePoemSwitch.setChecked(userPrefs.getHomeImagePoemSetting());
-
     }
 
 
@@ -51,12 +43,6 @@ public class SettingActivity extends BaseActivity {
         userPrefs.setVerticalWrite(verticalWrite.isChecked());
 
     }
-
-    @OnCheckedChanged(R.id.home_image_poem_switch)
-    void checkHomeImagePoem() {
-        userPrefs.setHomeImagePoem(homeImagePoemSwitch.isChecked());
-    }
-
 
     @OnClick(R.id.customize_bg_color)
     void chooseBgColor() {
