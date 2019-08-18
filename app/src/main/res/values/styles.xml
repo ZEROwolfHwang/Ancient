@@ -21,14 +21,6 @@
         <item name="android:textSize">@dimen/small_text_size</item>
     </style>
 
-    <style name="DayChooserTextStyle" parent="TextStyle">
-        <item name="android:textColor">@color/link_text</item>
-        <item name="android:textSize">@dimen/huge_text_size</item>
-    </style>
-
-    <style name="DayChooserUnitStyle" parent="TextStyle">
-        <item name="android:textSize">@dimen/huge_text_size</item>
-    </style>
 
     <style name="ThreeLinePoemTextStyle" parent="TextStyle">
         <item name="android:textColor">@color/text_bg</item>
@@ -58,14 +50,6 @@
         <item name="android:lineSpacingMultiplier">1.1</item>
     </style>
 
-    <style name="DiaryListDateStyle" parent="DiaryListContentStyle">
-        <item name="android:textSize">@dimen/small_text_size</item>
-    </style>
-
-    <style name="WriterTextStyle">
-        <item name="android:textColor">@color/text_white</item>
-        <item name="android:textSize">@dimen/small_text_size</item>
-    </style>
 
     <style name="NormalBg" parent="NormalBgColor">
         <item name="android:padding">@dimen/activity_horizontal_margin</item>

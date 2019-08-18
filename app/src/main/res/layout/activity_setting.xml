@@ -37,7 +37,7 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/white_border"
+                    android:background="#fff"
                     android:padding="16dp">
 
                     <TextView
@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/white_border"
+                    android:background="#fff"
                     android:padding="@dimen/margin_16"
                     android:text="@string/customize_background_color"/>
 
@@ -79,13 +79,6 @@
             android:layout_marginTop="@dimen/margin_18"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/TitleTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_16"
-                android:text="@string/account_info"
-            />
 
             <TextView
                 android:id="@+id/logout"
@@ -93,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/white_border"
+                android:background="#fff"
                 android:padding="16dp"
                 android:text="@string/logout"/>
 
