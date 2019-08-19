@@ -2,9 +2,11 @@
 package com.liuzr.ancient.ui;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.liuzr.ancient.R;
 import com.liuzr.ancient.global.BaseActivity;
@@ -25,6 +27,19 @@ public class SignupActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        TextView appName = findViewById(R.id.app_name);
+        TextView appSlogan = findViewById(R.id.app_slogan);
+
+//        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/narrow.ttf");
+//        Typeface typeface = ResourcesCompat.getFont(this, R.font.narrow);
+//        fontText.setTypeface(typeface);
+
+        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "fonts/afonts.TTF");
+
+//        appName.setTypeface(typeface);
+        appSlogan.setTypeface(typeface1);
+
     }
 
     @OnClick(R.id.login)

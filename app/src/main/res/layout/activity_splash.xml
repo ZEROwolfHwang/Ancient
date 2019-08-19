@@ -17,6 +17,7 @@
         >
 
         <TextView
+            android:textAppearance="@style/TextAppearance"
             android:text="@string/logo_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,6 +27,7 @@
             />
 
         <TextView
+            android:textAppearance="@style/TextAppearance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/TextStyle"
@@ -37,6 +39,7 @@
             />
 
         <com.liuzr.ancient.ui.widget.TextPointView
+            android:textAppearance="@style/TextAppearance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

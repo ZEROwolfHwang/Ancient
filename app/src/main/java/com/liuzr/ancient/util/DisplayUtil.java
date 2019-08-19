@@ -27,7 +27,7 @@ public class DisplayUtil {
     return Resources.getSystem().getDisplayMetrics().heightPixels;
   }
   /**
-   * Transfer sp to px in order keep font size the same
+   * Transfer sp to px in order keep fonts size the same
    * @param context
    * @param spValue
    * @return
@@ -38,7 +38,7 @@ public class DisplayUtil {
   }
 
   /**
-   * Transfer px to sp in order keep font size the same
+   * Transfer px to sp in order keep fonts size the same
    * @param context
    * @param pxValue
    * @return

@@ -7,10 +7,10 @@ import java.util.HashMap;
 
 
 public class FullDateManager {
-
-  private final static String YEAR_CHINESE = "年";
-  private final static String MONTH_CHINESE = "月";
-  private final static String DAY_CHINESE = "日";
+//년8윌19일
+  private final static String YEAR_CHINESE = "년";
+  private final static String MONTH_CHINESE = "윌";
+  private final static String DAY_CHINESE = "일";
   private int year = 0;
   private int month = 0;
   private int day = 0;
@@ -20,17 +20,28 @@ public class FullDateManager {
   private HashMap<Integer, String> dayMap = new HashMap<>();
 
   static {
-    intToChinese.put(0, "零");
-    intToChinese.put(1, "一");
-    intToChinese.put(2, "二");
-    intToChinese.put(3, "三");
-    intToChinese.put(4, "四");
-    intToChinese.put(5, "五");
-    intToChinese.put(6, "六");
-    intToChinese.put(7, "七");
-    intToChinese.put(8, "八");
-    intToChinese.put(9, "九");
-    intToChinese.put(10, "十");
+//    intToChinese.put(0, "零");
+//    intToChinese.put(1, "一");
+//    intToChinese.put(2, "二");
+//    intToChinese.put(3, "三");
+//    intToChinese.put(4, "四");
+//    intToChinese.put(5, "五");
+//    intToChinese.put(6, "六");
+//    intToChinese.put(7, "七");
+//    intToChinese.put(8, "八");
+//    intToChinese.put(9, "九");
+//    intToChinese.put(10, "十");
+    intToChinese.put(0, "0");
+    intToChinese.put(1, "1");
+    intToChinese.put(2, "2");
+    intToChinese.put(3, "3");
+    intToChinese.put(4, "4");
+    intToChinese.put(5, "5");
+    intToChinese.put(6, "6");
+    intToChinese.put(7, "7");
+    intToChinese.put(8, "8");
+    intToChinese.put(9, "9");
+    intToChinese.put(10, "10");
   }
 
   public FullDateManager() {
@@ -68,7 +79,8 @@ public class FullDateManager {
     }
     StringBuilder otherString = new StringBuilder();
     int tens = dayOrMonth / 10;
-    otherString.append((tens == 1 ? "" : intToChinese.get(tens)) + "十");
+//    otherString.append((tens == 1 ? "" : intToChinese.get(tens)) + "十");
+    otherString.append((tens == 1 ? "" : intToChinese.get(tens)) + "1");
     int units = dayOrMonth - tens * 10;
     otherString.append((units <= 0) ? "" : intToChinese.get(units));
     return otherString.toString();

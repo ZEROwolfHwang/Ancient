@@ -44,7 +44,6 @@ public class DiaryListActivity extends BaseActivity implements DiaryListAdapter.
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_diary_list);
-//    JianShiApplication.getAppComponent().inject(this);
     diaryService = new DiaryService(this);
     diaryListView.setHasFixedSize(true);
     diaryListView.setLayoutManager(

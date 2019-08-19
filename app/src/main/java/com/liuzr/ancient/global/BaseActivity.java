@@ -1,6 +1,5 @@
 package com.liuzr.ancient.global;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -14,7 +13,6 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -24,14 +22,8 @@ public class BaseActivity extends AppCompatActivity {
     protected String TAG = getClass().getSimpleName() + ": %s";
 
     @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//    JianShiApplication.getAppComponent().inject(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }

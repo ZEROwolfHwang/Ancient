@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_18"
         android:maxLines="1"
+        android:textAppearance="@style/TextAppearance"
         style="@style/EditTextTitleStyle" />
 
     <ScrollView
@@ -26,6 +27,7 @@
         >
 
         <EditText
+            android:textAppearance="@style/TextAppearance"
             android:id="@+id/edit_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,6 +49,7 @@
 
         <com.liuzr.ancient.ui.widget.TextPointView
             android:id="@+id/edit_save"
+            android:textAppearance="@style/TextAppearance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

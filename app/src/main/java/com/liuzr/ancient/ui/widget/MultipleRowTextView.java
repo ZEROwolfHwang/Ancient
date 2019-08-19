@@ -13,7 +13,7 @@ import android.view.View;
 import com.liuzr.ancient.R;
 import com.liuzr.ancient.util.DisplayUtil;
 
-import uk.co.chrisjenx.calligraphy.TypefaceUtils;
+import androidx.core.content.res.ResourcesCompat;
 
 
 public class MultipleRowTextView extends View {
@@ -57,7 +57,9 @@ public class MultipleRowTextView extends View {
     } finally {
       typedArray.recycle();
     }
-    setTypeface(TypefaceUtils.load(context.getAssets(), "fonts/jianshi_default.otf"));
+//    setTypeface(TypefaceUtils.load(context.getAssets(), "fonts/jianshi_default.otf"));
+//    setTypeface(TypefaceUtils.load(context.getAssets(), "fonts/Roboto-RobotoRegular.ttf"));
+    setTypeface(ResourcesCompat.getFont(context, R.font.dfonts));
   }
 
   //设置文字

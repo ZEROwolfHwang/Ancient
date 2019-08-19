@@ -21,6 +21,7 @@
         >
 
             <TextView
+                android:textAppearance="@style/TextAppearance"
                 style="@style/TitleTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
                     android:padding="16dp">
 
                     <TextView
+                        android:textAppearance="@style/TextAppearance"
                         style="@style/TextStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -58,6 +60,7 @@
                 </FrameLayout>
 
                 <TextView
+                    android:textAppearance="@style/TextAppearance"
                     android:id="@+id/customize_bg_color"
                     style="@style/ClickableTextStyle"
                     android:layout_width="match_parent"
@@ -81,6 +84,7 @@
 
 
             <TextView
+                android:textAppearance="@style/TextAppearance"
                 android:id="@+id/logout"
                 style="@style/ClickableTextStyle"
                 android:layout_width="match_parent"

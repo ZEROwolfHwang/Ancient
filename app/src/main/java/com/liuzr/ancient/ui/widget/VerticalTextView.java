@@ -1,7 +1,5 @@
-
 package com.liuzr.ancient.ui.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
@@ -11,16 +9,19 @@ import android.widget.TextView;
 import com.liuzr.ancient.R;
 import com.liuzr.ancient.util.DisplayUtil;
 
+import androidx.core.content.res.ResourcesCompat;
 
-@SuppressLint("AppCompatCustomView")
+
 public class VerticalTextView extends TextView {
 
   public VerticalTextView(Context context) {
     this(context, null);
+    setTypeface(ResourcesCompat.getFont(context, R.font.dfonts));
   }
 
   public VerticalTextView(Context context, AttributeSet attrs) {
     super(context, attrs, 0);
+    setTypeface(ResourcesCompat.getFont(context, R.font.dfonts));
   }
 
   public VerticalTextView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -35,6 +36,7 @@ public class VerticalTextView extends TextView {
     } finally {
       typedArray.recycle();
     }
+    setTypeface(ResourcesCompat.getFont(context, R.font.dfonts));
   }
 
   @Override

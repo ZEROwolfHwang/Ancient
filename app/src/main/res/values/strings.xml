@@ -14,9 +14,9 @@
     <string name="logo_name">Ancient</string>
      
     <string name="logo_slogan">문자의 본질로 회귀, 아름답게</string>
-    <string name="write">Write</string>
-    <string name="read">Read</string>
-    <string name="setting">Setting</string>
+    <string name="write">쓰</string>
+    <string name="read">읽</string>
+    <string name="setting">설정</string>
      
     <string name="day">일</string>
      
@@ -31,9 +31,9 @@
      
     <string name="edit_content_hint">너의 이야기를 들려주다…</string>
      
-    <string name="edit">Edit</string>
+    <string name="edit">편집</string>
      
-    <string name="edit_save">Save</string>
+    <string name="edit_save">저장</string>
 
     <string name="email">username</string>
     <string name="password">password</string>
@@ -99,6 +99,7 @@
 
     <!--three-line poems, use ',' to split into a three-line poem -->
     <string name="three_line_poem_default">어제는 하늘이 어두워지더니-비바람마저 몰아쳤지요-나 그대 걱정스러워</string>
+    <!--<string name="three_line_poem_default">春色三分-二分尘土-一分流水</string>-->
     <string-array name="three_line_poem_array">
          
         <item>팔벌려 어떻게든 막아보려 애썼어요-걱정말아요 내일은 해가 뜬대요-파란하늘을 같이 볼 수 있을 거예요</item>

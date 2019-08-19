@@ -9,14 +9,16 @@
     >
 
     <com.liuzr.ancient.ui.widget.TextPointView
+        android:textAppearance="@style/TextAppearance"
         android:id="@+id/bg_color_hint"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:text="色"
+        app:text="색"
         android:layout_gravity="center"
         />
 
     <TextView
+        android:textAppearance="@style/TextAppearance"
         android:id="@+id/bg_color_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

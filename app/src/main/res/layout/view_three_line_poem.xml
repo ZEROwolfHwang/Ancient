@@ -9,6 +9,7 @@
 
     <com.liuzr.ancient.ui.widget.VerticalTextView
         android:id="@+id/last_line"
+        android:textAppearance="@style/TextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -19,6 +20,7 @@
 
     <com.liuzr.ancient.ui.widget.VerticalTextView
         android:id="@+id/second_line"
+        android:textAppearance="@style/TextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -29,12 +31,13 @@
 
     <com.liuzr.ancient.ui.widget.VerticalTextView
         android:id="@+id/first_line"
+        android:textAppearance="@style/TextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
         style="@style/ThreeLinePoemTextStyle"
         android:gravity="center"
-        app:verticalTextSize="@dimen/big_text_size"
+        app:verticalTextSize="@dimen/super_huge_text_size"
         />
 
 </LinearLayout>

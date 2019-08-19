@@ -60,10 +60,8 @@ public class ViewActivity extends BaseActivity {
     private String diaryUuid;
     private boolean verticalStyle = false;
 
-    //  @Inject
     DiaryService diaryService;
 
-    //  @Inject
     UserPrefs userPrefs;
 
 

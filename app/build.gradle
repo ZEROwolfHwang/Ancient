@@ -4,7 +4,7 @@ apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.liuzr.ancient"
+        applicationId "com.liuzr.ancient_stamp"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -48,8 +48,6 @@ dependencies {
     implementation 'joda-time:joda-time:2.3'
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
-    //font
-    implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
 
     implementation 'io.reactivex:rxandroid:1.2.1'
     implementation 'io.reactivex:rxjava:1.1.6'

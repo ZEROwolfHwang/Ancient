@@ -13,6 +13,7 @@
 
     <com.liuzr.ancient.ui.widget.TextPointView
         android:id="@+id/view_write"
+        android:textAppearance="@style/TextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
