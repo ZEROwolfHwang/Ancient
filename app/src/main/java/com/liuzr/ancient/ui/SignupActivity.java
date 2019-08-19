@@ -31,9 +31,6 @@ public class SignupActivity extends BaseActivity {
         TextView appName = findViewById(R.id.app_name);
         TextView appSlogan = findViewById(R.id.app_slogan);
 
-//        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/narrow.ttf");
-//        Typeface typeface = ResourcesCompat.getFont(this, R.font.narrow);
-//        fontText.setTypeface(typeface);
 
         Typeface typeface1 = Typeface.createFromAsset(getAssets(), "fonts/afonts.TTF");
 
