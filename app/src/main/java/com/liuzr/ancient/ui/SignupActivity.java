@@ -41,10 +41,10 @@ public class SignupActivity extends BaseActivity {
 
     @OnClick(R.id.login)
     void login() {
-//        boolean isOk = checkEmailPwdNonNull();
-//        if (isOk) {
-        startActivity(new Intent(this, MainActivity.class));
-//        }
+        boolean isOk = checkEmailPwdNonNull();
+        if (isOk) {
+            startActivity(new Intent(this, MainActivity.class));
+        }
     }
 
     private boolean checkEmailPwdNonNull() {
@@ -52,7 +52,7 @@ public class SignupActivity extends BaseActivity {
             mUsername.setError(getString(R.string.email_should_not_be_null));
             return false;
         }
-        if (!"admin".equals(getEditString(mUsername))) {
+        if (!"liuzr".equals(getEditString(mUsername))) {
             mUsername.setError(getString(R.string.wrong_email_format));
             return false;
         }
