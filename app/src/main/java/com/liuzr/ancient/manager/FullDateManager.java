@@ -71,19 +71,22 @@ public class FullDateManager {
   }
 
   private String otherToChinese(int dayOrMonth) {
-    if (dayOrMonth < 0) {
-      return "";
-    }
-    if (dayOrMonth < 10) {
-      return intToChinese.get(dayOrMonth);
-    }
-    StringBuilder otherString = new StringBuilder();
-    int tens = dayOrMonth / 10;
-//    otherString.append((tens == 1 ? "" : intToChinese.get(tens)) + "十");
-    otherString.append((tens == 1 ? "" : intToChinese.get(tens)) + "1");
-    int units = dayOrMonth - tens * 10;
-    otherString.append((units <= 0) ? "" : intToChinese.get(units));
-    return otherString.toString();
+//    dayOrMonth = 10;
+//    if (dayOrMonth < 0) {
+//      return "";
+//    }
+//    if (dayOrMonth < 10) {
+//      return intToChinese.get(dayOrMonth);
+//    }
+//    StringBuilder otherString = new StringBuilder();
+//    int tens = dayOrMonth / 10;
+////    otherString.append((tens == 1 ? "" : intToChinese.get(tens)) + "十");
+////    otherString.append((tens == 1 ? "" : intToChinese.get(tens)) + "1");
+//    otherString.append((tens == 1 ? "" : intToChinese.get(tens)));
+//    int units = dayOrMonth - tens * 10;
+//    otherString.append((units <= 0) ? "" : intToChinese.get(units));
+//    return otherString.toString();
+    return dayOrMonth + "";
   }
 
   // format : "二零一五年 九月 十一日"
